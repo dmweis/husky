@@ -1,0 +1,14 @@
+actions: []
+authors: Devon Ash <dash@clearpathrobotics.com>
+brief: ''
+bugtracker: ''
+depends:
+- catkin
+description: The dual_ur5_teleop_general package
+license: BSD
+maintainers: Devon Ash <dash@clearpathrobotics.com>
+msgs: []
+package_type: package
+repo_url: ''
+srvs: []
+url: ''
