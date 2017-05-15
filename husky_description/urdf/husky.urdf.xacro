@@ -33,10 +33,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <xacro:include filename="$(find husky_description)/urdf/accessories/sick_lms1xx_mount.urdf.xacro"/>
   <xacro:include filename="$(find husky_description)/urdf/accessories/sensor_arch.urdf.xacro"/>
   <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
-  <xacro:include filename="$(find robotiq_s_model_visualization)/cfg/robotiq_hand_macro.urdf.xacro"/> 
-  <xacro:include filename="$(find robotiq_force_torque_sensor)/urdf/robotiq_fts300.urdf.xacro"/>
-  <xacro:include filename="$(find flir_ptu_description)/urdf/d46.urdf.xacro"/>
-  <xacro:include filename="$(find pointgrey_camera_description)/urdf/pointgrey_bumblebee2.urdf.xacro"/>
 
   <property name="M_PI" value="3.14159"/>
 
@@ -218,14 +214,14 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
     </xacro:if>
 
-    <xacro:if value="$(optenv HUSKY_LASER_ENABLED false)">
+    <xacro:if value="$(arg laser_enabled)">
 
       <sick_lms1xx_mount prefix="base" topic="scan"/>
 
       <joint name="laser_mount_joint" type="fixed">
         <origin xyz="$(optenv HUSKY_LMS1XX_XYZ 0.2206 0.0 0.00635)"
                 rpy="$(optenv HUSKY_LMS1XX_RPY 0.0 0.0 0.0)" />
-        <parent link="$(optenv HUSKY_LASER_PARENT_LINK top_plate_link)" />
+        <parent link="top_plate_link" />
         <child link="base_laser_mount" />
       </joint>
 
